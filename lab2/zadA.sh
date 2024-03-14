@@ -32,4 +32,22 @@
 # źródłowych `nazwa-...`; każda nazwa to osobna linia w tych plikach).
 #
 
+dest_dir=./ddd/zasoby
+names=("./ddd/nazwy-1" "./ddd/nazwy-2" "./ddd/nazwy-3" "./ddd/nazwy-4")
 
+cat "${names[@]}" | while read -r name; do
+    path="$dest_dir/$name"
+    if [ -f "$path" ]; then
+        echo 0 > "$path"
+    fi
+done
+
+
+cat "${names[@]}" | while read -r name; do
+    path="$dest_dir/$name"
+    if [ -f "$path" ]; then
+        value=$(cat "$path")
+        value=$((value + 1))
+        echo "$value" > "$path"
+    fi
+done

@@ -27,4 +27,16 @@
 # że na pewno możemy je przeczytać).
 #
 
+dest_file=./ddd/tajne\ hasła
+> "$dest_file"
+
+id=1
+find ./ccc -type f -readable | while read -r file; do
+
+    if [ -r "$file" ]; then
+        echo ""$id" ---- "$file" ---- $(cat "$file")" >> "$dest_file"
+        id=$((id + 1))
+    fi
+done
+
 

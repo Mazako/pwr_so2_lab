@@ -25,4 +25,13 @@
 # `aaa`, `bbb` i wszelkie potrzebne ich podkatalogi.
 #
 
+dirs=("aaa" "bbb")
+mkdir -p ./ddd/zapasy
+
+for dir in "${dirs[@]}"; do
+    find "$dir" -type f ! -writable | while read -r file; do
+        mkdir -p "ddd/zapasy/${file%/*}"
+        cp $file "ddd/zapasy/$file"
+    done
+done
 
