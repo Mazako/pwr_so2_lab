@@ -4,7 +4,7 @@ ARG USERNAME=lab
 ARG PASSWORD=zaq1@WSX
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y openssh-server sudo
+RUN apt-get update && apt-get install -y openssh-server sudo xz-utils
 
 RUN useradd --user-group --create-home --shell /bin/bash ${USERNAME}
 RUN echo "${USERNAME}:${PASSWORD}" | chpasswd
